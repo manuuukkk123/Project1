@@ -1,0 +1,25 @@
+# static dropdowns
+# select is a class used for static dropdowns
+
+import time
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
+service_obj = Service("C:/Users/KManu1/.cache/selenium/chromedriver/win64/116.0.5845.96/chromedriver.exe")
+driver = webdriver.Chrome(service=service_obj)
+
+driver.get("https://rahulshettyacademy.com/angularpractice/")
+
+# ID, XPATH, CSSSelector, Classname, name, LinkText
+driver.find_element(By.NAME, "email").send_keys("hello@gmail.com")
+driver.find_element(By.ID, "exampleInputPassword1").send_keys("12345")
+driver.find_element(By.ID, "exampleCheck1").click()
+
+# static dropdown
+dropdown = Select(driver.find_element(By.ID, "exampleFormControlSelect1"))
+dropdown.select_by_visible_text("Female")
+dropdown.select_by_visible_index(0)
+
+time.sleep(10)
